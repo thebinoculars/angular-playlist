@@ -1,0 +1,61 @@
+<a id="offCanvas" class="hamburger" (click)="toggleMenu()"><i class="ti-menu"></i></a>
+<div [ngClass]="{'nav-offcanvas': true, 'open': menuOpen}">
+    <button type="button" class="close" id="offCanvasClose" aria-label="Close" (click)="toggleMenu()">
+        <i class="ti-close"></i>
+    </button>
+    <div class="nav-offcanvas-menu">
+        <ul>
+            <li><a (click)="toggleMenu()" [routerLink]="['']">Home</a></li>
+            <li *ngFor="let item of menu"><a (click)="toggleMenu()" [routerLink]="['/list', item.FolderID]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ item.Name }}</a></li>
+            <li><a [ngStyle]="{color: '#f00'}" (click)="logout()">Logout</a></li>
+        </ul>
+    </div>
+</div>
+<div [ngClass]="{'offcanvas-overlay': true, 'on': menuOn}" (click)="toggleMenu()"></div>
+<div class="content-wrapper">
+  <div class="page" *ngIf="music">
+    <div class="panel panel-controls">
+      <div id="player">
+        <div class="ctrl tracker">
+          <div class="tag">
+            <h1>{{ music[currentIndex].Name }}</h1>
+          </div>
+          <div class="control">
+            <div class="left">
+              <div class="rewind icon" (click)="run(currentIndex - 1)"></div>
+              <div class="playback icon" [ngClass]="{'playing': !audio.paused}" (click)="audio.paused ? audio.play() : audio.pause()"></div>
+              <div class="fastforward icon" (click)="run(currentIndex + 1)"></div>
+            </div>
+            <div class="volume right">
+              <div [ngClass]="{'mute icon left': true, 'enable': volume === 0}" (click)="muted()" title="Mute"></div>
+              <div class="slider left" (click)="changeVolume($event)">
+                <div class="pace" [ngStyle]="{width: volume * 100 + '%'}"></div>
+                <a [ngStyle]="{left: volume * 100 + '%'}"></a>
+              </div>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="slider playdid" (click)="goTo($event)">
+              <div class="loaded" [ngStyle]="{width: seekable + '%'}"></div>
+              <div class="pace" [ngStyle]="{width: progress + '%'}"></div>
+              <a [ngStyle]="{left: progress + '%'}"></a>
+            </div>
+            <div class="timer left">{{ currentTime + ' / ' + duration }}</div>
+            <div class="right">
+              <div [ngClass]="{'repeat icon': true, 'enable': repeat}" (click)="repeat = !repeat" title="Repeat"></div>
+              <div [ngClass]="{'shuffle icon': true, 'enable': shuffle}" (click)="shuffle = !shuffle" title="Shuffle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-channel-list available">
+      <div class="list">
+        <ul id="playlist" #playlist>
+          <li *ngFor="let item of music; let i = index" [ngClass]="{'playing': i === currentIndex}" (click)="run(i)">{{ item.Name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<audio id="audio" preload="auto" controls [muted]="volume === 0" [volume]="volume" (ended)="repeat ? run(currentIndex, true) : run(currentIndex + 1, true)" (timeupdate)="timeupdate()" #audio></audio>
