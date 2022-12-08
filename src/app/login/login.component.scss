@@ -7,7 +7,9 @@ a {
   color: #eee;
   outline: 0;
   text-decoration: none;
-  &:focus, &:hover {
+
+  &:focus,
+  &:hover {
     text-decoration: underline;
   }
 }
@@ -22,6 +24,7 @@ input {
   padding: 0;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
+
   &[type='submit'] {
     cursor: pointer;
   }
@@ -89,8 +92,12 @@ input {
 .form {
   margin: -14px;
   margin: -0.875rem;
+
   input {
-    &[type='password'], &[type='text'], &[type='submit'] {
+
+    &[type='password'],
+    &[type='text'],
+    &[type='submit'] {
       width: 100%;
     }
   }
@@ -112,18 +119,24 @@ input {
 
 .login {
   color: #eee;
+
   label {
     border-radius: 0.25rem;
     padding: 16px;
     padding: 1rem;
   }
+
   input {
-    &[type='text'], &[type='password'], &[type='submit'] {
+
+    &[type='text'],
+    &[type='password'],
+    &[type='submit'] {
       border-radius: 0.25rem;
       padding: 16px;
       padding: 1rem;
     }
   }
+
   label {
     background-color: #363b41;
     border-bottom-right-radius: 0;
@@ -133,28 +146,40 @@ input {
     padding-right: 20px;
     padding-right: 1.25rem;
   }
+
   input {
-    &[type='password'], &[type='text'] {
+
+    &[type='password'],
+    &[type='text'] {
       background-color: #3b4148;
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
     }
+
     &[type='password'] {
-      &:focus, &:hover {
+
+      &:focus,
+      &:hover {
         background-color: #434a52;
       }
     }
+
     &[type='text'] {
-      &:focus, &:hover {
+
+      &:focus,
+      &:hover {
         background-color: #434a52;
       }
     }
+
     &[type='submit'] {
       background-color: #ea4c88;
       color: #eee;
       font-weight: 700;
       text-transform: uppercase;
-      &:focus, &:hover {
+
+      &:focus,
+      &:hover {
         background-color: #d44179;
       }
     }
@@ -168,6 +193,7 @@ input {
   border: 1px solid transparent;
   border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
   &:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
@@ -184,6 +210,7 @@ input {
     padding: 0;
     margin: 0;
   }
+
   i {
     padding-right: 5px;
     vertical-align: middle;
