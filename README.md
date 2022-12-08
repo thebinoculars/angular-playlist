@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e8017859-5eb6-4b42-a8bc-7e5d66943281/deploy-status)](https://app.netlify.com/sites/angular-playlist/deploys)
+
 # AngularPlaylist
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
