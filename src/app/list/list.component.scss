@@ -156,6 +156,7 @@ h1 {
 
 .panel-channel-list {
   overflow-y: scroll;
+  overflow-x: hidden;
   max-height: calc(100vh - 250px);
   padding: 0 20px;
   background: #1e1e1e;

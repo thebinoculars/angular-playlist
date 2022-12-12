@@ -69,7 +69,9 @@ export class ListComponent implements OnInit {
     if (index < 0) {
       index = this.music.length - 1
     }
-    this.played.push(index)
+    if (!this.played.includes(index)) {
+      this.played.push(index)
+    }
     this.currentIndex = index
     this.audio.nativeElement.src = this.music[index]['StreamingLink']
     this.audio.nativeElement.load()
